@@ -1,0 +1,25 @@
+%% Sequence Diagram untuk Sistem Penjualan Makanan
+
+sequenceDiagram
+    participant Pelanggan as "Pelanggan"
+    participant Sistem as "Sistem Penjualan"
+    participant Makanan as "Database Makanan"
+    participant Pembayaran as "Gateway Pembayaran"
+
+    %% Proses Memesan Makanan
+    Pelanggan->>Sistem: Memilih Makanan
+    Sistem->>Makanan: Mengambil Daftar Makanan
+    Makanan-->>Sistem: Mengembalikan Daftar Makanan
+    Sistem-->>Pelanggan: Menampilkan Daftar Makanan
+
+    Pelanggan->>Sistem: Menambahkan Makanan ke Keranjang
+    Pelanggan->>Sistem: Melakukan Pembayaran
+    Sistem->>Pembayaran: Proses Pembayaran
+    Pembayaran-->>Sistem: Pembayaran Berhasil
+    Sistem-->>Pelanggan: Konfirmasi Pembayaran
+
+    %% Proses Pesanan
+    Sistem->>Sistem: Proses Pesanan
+    Sistem-->>Pelanggan: Pesanan Diterima
+    Pelanggan->>Sistem: Melihat Status Pesanan
+    Sistem-->>Pelanggan: Menampilkan Status Pesanan

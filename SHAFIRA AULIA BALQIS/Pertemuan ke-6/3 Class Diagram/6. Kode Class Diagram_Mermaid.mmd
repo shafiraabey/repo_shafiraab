@@ -1,0 +1,58 @@
+%% Class Diagram untuk Sistem Penjualan Makanan
+
+classDiagram
+    %% Kelas Pengguna
+    class Pengguna {
+        +String nama
+        +String email
+        +String nomorTelepon
+        +daftarPesanan()
+        +buatPesanan()
+        +melihatStatusPesanan()
+    }
+
+    %% Kelas Makanan
+    class Makanan {
+        +String namaMakanan
+        +double harga
+        +String deskripsi
+        +int stok
+        +tambahStok()
+        +kurangiStok()
+    }
+
+    %% Kelas Pesanan
+    class Pesanan {
+        +int idPesanan
+        +Pengguna pengguna
+        +List<Makanan> daftarMakanan
+        +double totalHarga
+        +String status
+        +prosesPesanan()
+        +updateStatus()
+    }
+
+    %% Kelas Pembayaran
+    class Pembayaran {
+        +int idPembayaran
+        +Pesanan pesanan
+        +String metodePembayaran
+        +double jumlah
+        +prosesPembayaran()
+        +cekStatusPembayaran()
+    }
+
+    %% Kelas Admin
+    class Admin {
+        +String namaAdmin
+        +String emailAdmin
+        +kelolaMenu()
+        +lihatLaporanPenjualan()
+        +kelolaPesanan()
+    }
+
+    %% Hubungan antar Kelas
+    Pengguna "1" --> "0..*" Pesanan : membuat >
+    Pesanan "1" --> "0..*" Makanan : berisi >
+    Pesanan "1" --> "1" Pembayaran : memiliki >
+    Admin "1" --> "0..*" Makanan : mengelola >

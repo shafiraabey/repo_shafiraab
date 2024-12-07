@@ -1,0 +1,13 @@
+%% State Diagram untuk Sistem Penjualan Makanan
+
+stateDiagram-v2
+    [*] --> MenungguPesanan : "Sistem Siap"
+
+    MenungguPesanan --> MemprosesPesanan : "Pesanan Diterima"
+    MemprosesPesanan --> MengirimPesanan : "Pesanan Diproses"
+    MengirimPesanan --> PesananSelesai : "Pesanan Dikirim"
+    
+    PesananSelesai --> [*] : "Pesanan Diterima oleh Pelanggan"
+
+    MemprosesPesanan --> PesananDitolak : "Pesanan Ditolak"
+    PesananDitolak --> [*] : "Pesanan Dibatalkan"

@@ -1,0 +1,24 @@
+%% Activity Diagram untuk Sistem Penjualan Makanan
+
+graph TD
+    A[Mulai] --> B[Pengguna Memilih Makanan]
+    B --> C[Pengguna Menambahkan Makanan ke Keranjang]
+    C --> D{Apakah Pengguna Sudah Siap Melanjutkan?}
+    
+    D -->|Ya| E[Pengguna Melakukan Pembayaran]
+    D -->|Tidak| B
+
+    E --> F[Memproses Pembayaran]
+    F --> G{Apakah Pembayaran Berhasil?}
+    
+    G -->|Ya| H[Pesanan Diterima]
+    G -->|Tidak| I[Tampilkan Pesan Kesalahan]
+
+    H --> J[Lihat Status Pesanan]
+    J --> K[Pesanan Sedang Diproses]
+    K --> L[Pesanan Dikirim]
+    L --> M[Pesanan Selesai]
+
+    I --> N[Pengguna Memperbaiki Pembayaran]
+    N --> E
+    M --> O[Selesai]

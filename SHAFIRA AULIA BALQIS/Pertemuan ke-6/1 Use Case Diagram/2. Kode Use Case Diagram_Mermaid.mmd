@@ -1,0 +1,29 @@
+%% Use Case Diagram untuk Sistem Penjualan Makanan
+
+%% Menggunakan tata letak grafik dengan arah dari kiri ke kanan
+graph LR
+    %% Aktor
+    Pelanggan[Pengguna] -->|Berinteraksi| Sistem((Sistem Penjualan Makanan))
+    
+    %% Use Cases untuk Pengguna
+    Pelanggan --> UC1[Memesan Makanan]
+    Pelanggan --> UC2[Membayar Pesanan]
+    Pelanggan --> UC3[Melihat Status Pesanan]
+    
+    %% Sistem Utama
+    subgraph SistemPenjualanMakanan["Sistem Penjualan Makanan"]
+        UC1
+        UC2
+        UC3
+        UC4[Terima Pesanan]
+    end
+    
+    %% Aktor Admin
+    Admin[Admin] -->|Mengelola| UC5[Kelola Menu]
+    Admin --> UC6[Lihat Laporan Penjualan]
+    Admin --> UC7[Kelola Pesanan]
+    
+    %% Interaksi dengan Sistem Eksternal
+    UC2 -->|Berinteraksi dengan| GatewayPembayaran["Gateway Pembayaran"]
+    UC1 -->|Memeriksa Stok di| SistemInventori["Sistem Inventori"]
+
